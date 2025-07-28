@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import GlobalStyle from "../styles";
-import ArtPieceList from "@/componets/ArtPieceList";
+import Layout from "@/components/Layout";
 
 export default function App({ Component, pageProps }) {
   const [artPieces, setArtPieces] = useState([]);
@@ -20,10 +20,9 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <>
-      
+    <Layout>
       <GlobalStyle />
       <Component {...pageProps} artPieces={artPieces} />
-    </>
+    </Layout>
   );
 }

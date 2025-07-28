@@ -1,4 +1,4 @@
-import ArtPieceSpotLight from "@/componets/ArtPieceSpotlight";
+import ArtPieceSpotLight from "@/components/ArtPieceSpotlight";
 export default function HomePage({ artPieces }) {
   const artPieceRandom = Math.floor(Math.random() * artPieces.length);
   const spotlightArtPiece = artPieces[artPieceRandom];
