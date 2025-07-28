@@ -1,9 +1,13 @@
-import ArtPieceList from "@/componets/ArtPieceList";
+import ArtPieceSpotLight from "@/componets/ArtPieceSpotlight";
 export default function HomePage({ artPieces }) {
+  const artPieceRandom = Math.floor(Math.random() * artPieces.length);
+  const spotlightArtPiece = artPieces[artPieceRandom];
+
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-      <ArtPieceList artPieces={artPieces} />
-    </div>
+    <main>
+      {spotlightArtPiece ? (
+        <ArtPieceSpotLight piece={spotlightArtPiece} />
+      ) : null}
+    </main>
   );
 }
