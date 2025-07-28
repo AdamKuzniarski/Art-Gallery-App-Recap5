@@ -1,28 +1,26 @@
-import { useState } from "react";
-import { useEffect } from "react";
 import GlobalStyle from "../styles";
 import Layout from "@/components/Layout";
+import useSWR from "swr";
+const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
-  const [artPieces, setArtPieces] = useState([]);
-  async function loadGallery() {
-    try {
-      const response = await fetch("https://example-apis.vercel.app/api/art");
-      const data = await response.json();
-      console.log(data);
-      setArtPieces(data);
-    } catch (error) {
-      console.log(error);
-    }
+  const { data: artPieces, error } = useSWR(
+    "https://example-apis.vercel.app/api/art",
+    fetcher
+  );
+
+  if (error) {
+    <h2>No data to load </h2>;
   }
-  useEffect(() => {
-    loadGallery();
-  }, []);
+
+  if (!artPieces) {
+    <h2>Loading...</h2>;
+  }
 
   return (
     <Layout>
       <GlobalStyle />
-      <Component {...pageProps} artPieces={artPieces} />
+      <Component {...pageProps} artPieces={artPieces || []} />
     </Layout>
   );
 }
