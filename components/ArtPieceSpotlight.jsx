@@ -1,11 +1,51 @@
 import Image from "next/image";
+import FavoriteButton from "./FavoriteButton";
+import styled from "styled-components";
 
-export default function ArtPieceSpotLight({ piece }) {
+export default function ArtPieceSpotLight({
+  piece,
+  favorites,
+  onToggleFavorite,
+}) {
   return (
-    <figure>
+    <FigureCard>
       <Image src={piece.imageSource} width={300} height={300} alt="" />
 
       <figcaption>{piece.artist}</figcaption>
-    </figure>
+
+      <FavoriteButton
+        piece={piece}
+        favorites={favorites}
+        onToggleFavorite={onToggleFavorite}
+      ></FavoriteButton>
+    </FigureCard>
   );
 }
+const FigureCard = styled("figure")`
+  position: relative;
+  border: 20px solid #344056;
+  border-radius: 10px;
+  width: 80vw;
+  max-width: 350px;
+  box-shadow: 5px 4px 5px rgba(43, 45, 44, 0.7);
+
+  img {
+    /* border-radius: 20px; */
+  }
+
+  figcaption {
+    background-color: #345644;
+    color: #e0e0e0;
+    padding: 0.5rem 0.7rem;
+    margin-top: -4px; //Hack!
+
+    p {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+`;
