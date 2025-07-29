@@ -9,7 +9,7 @@ export default function ArtPieceSpotLight({
 }) {
   return (
     <FigureCard>
-      <Image src={piece.imageSource} width={300} height={300} alt="" />
+      <Image src={piece.imageSource} width={300} height={300} alt={piece.name} />
 
       <figcaption>{piece.artist}</figcaption>
 
