@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }) {
         artPieces={artPieces || []}
         favorites={favorites}
         onToggleFavorite={handleToggleFavorite}
-        isFavorirte={isFavoriteArtPiece}
+        isFavorite={isFavoriteArtPiece}
       />
     </Layout>
   );

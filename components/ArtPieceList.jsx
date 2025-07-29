@@ -15,6 +15,7 @@ export default function ArtPieceList({
               piece={piece}
               favorites={favorites}
               onToggleFavorite={onToggleFavorite}
+              
             />
           </Link>
         </li>

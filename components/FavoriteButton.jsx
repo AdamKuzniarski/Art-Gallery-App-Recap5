@@ -8,7 +8,7 @@ export default function FavoriteButton({ piece, onToggleFavorite, favorites }) {
         return onToggleFavorite(piece.slug);
       }}
     >
-      {favorites.includes(piece.slug) ? "❤️" : "🩶"}
+      {favorites.includes(piece?.slug) ? "❤️" : "🩶"}
     </FavButton>
   );
 }
