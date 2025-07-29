@@ -21,7 +21,7 @@ export default function ArtPieceForm({ onAddComment }) {
         required
       />
 
-      <StyledButton type="submit" style={{}}>
+      <StyledButton type="submit">
         Send
       </StyledButton>
     </form>
