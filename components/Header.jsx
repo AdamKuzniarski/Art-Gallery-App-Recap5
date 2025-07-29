@@ -5,7 +5,7 @@ export default function Header() {
 }
 
 const MainHeader = styled("header")`
-  display: flex;
+  display: flex;  
   justify-content: center;
   position: sticky;
   top: 0;
