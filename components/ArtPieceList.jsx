@@ -1,14 +1,21 @@
 import Link from "next/link";
 import ArtPiece from "@/components/ArtPiece";
 
-
-export default function ArtPieceList({ artPieces }) {
+export default function ArtPieceList({
+  artPieces,
+  onToggleFavorite,
+  favorites,
+}) {
   return (
     <ul>
       {artPieces.map((piece) => (
         <li key={piece.slug}>
           <Link href={`overview/${piece.slug}`}>
-            <ArtPiece piece={piece} />
+            <ArtPiece
+              piece={piece}
+              favorites={favorites}
+              onToggleFavorite={onToggleFavorite}
+            />
           </Link>
         </li>
       ))}

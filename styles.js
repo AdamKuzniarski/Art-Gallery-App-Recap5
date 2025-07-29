@@ -36,8 +36,8 @@ export default createGlobalStyle`
    background-color: var(--main-bg-color);
   }
 
-  /* img {
+   img {
    width: 100%;
    height: auto;
-  } */
+  } 
 `;
