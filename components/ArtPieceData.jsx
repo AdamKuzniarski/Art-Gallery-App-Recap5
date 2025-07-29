@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
+import ArtPieceForm from "./ArtPieceForm";
+import { useState } from "react";
 
 export default function ArtPieceDetails({
   artPieceData,
@@ -9,6 +11,11 @@ export default function ArtPieceDetails({
   onToggleFavorite,
   favorites,
 }) {
+  const [comments, setComments] = useState([]);
+
+  function handleAddComment(newComment) {
+    setComments([...comments, newComment]);
+  }
   return (
     <>
       <Link href="/overview">Back To Galery</Link>
@@ -25,8 +32,19 @@ export default function ArtPieceDetails({
           piece={piece}
           favorites={favorites}
           onToggleFavorite={onToggleFavorite}
-        ></FavoriteButton>
+        />
       </FigureCard>
+
+      <div>
+        <h3>Comments:</h3>
+        {comments.map((comment, index) => (
+          <div key={index} >
+            <p>{comment.comment}</p>
+          </div>
+        ))}
+      </div>
+
+      <ArtPieceForm onAddComment={handleAddComment} />
     </>
   );
 }
@@ -40,3 +58,6 @@ const FigureCard = styled("figure")`
     color: white;
   }
 `;
+
+
+

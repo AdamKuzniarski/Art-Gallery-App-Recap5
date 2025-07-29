@@ -36,12 +36,19 @@ export default createGlobalStyle`
    background-color: var(--main-bg-color);
   }
 
+  main div{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    min-height: 0;
+  }
    img {
    width: 100%;
    height: auto;
   }
+
   
   ul{
     list-style: none;
   }
+
 `;
