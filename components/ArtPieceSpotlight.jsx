@@ -14,6 +14,7 @@ export default function ArtPieceSpotLight({
       <figcaption>{piece.artist}</figcaption>
 
       <FavoriteButton
+      
         piece={piece}
         favorites={favorites}
         onToggleFavorite={onToggleFavorite}
