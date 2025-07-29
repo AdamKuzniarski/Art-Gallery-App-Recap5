@@ -4,7 +4,7 @@ export default function FavoriteButton({ piece, onToggleFavorite, favorites }) {
   return (
     <FavButton
       onClick={(event) => {
-        event.preventDefault();
+         event.preventDefault(); 
         return onToggleFavorite(piece.slug);
       }}
     >

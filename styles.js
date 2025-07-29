@@ -45,5 +45,10 @@ export default createGlobalStyle`
    width: 100%;
    height: auto;
   }
- 
+
+  
+  ul{
+    list-style: none;
+  }
+
 `;
