@@ -39,5 +39,9 @@ export default createGlobalStyle`
    img {
    width: 100%;
    height: auto;
-  } 
+  }
+  
+  ul{
+    list-style: none;
+  }
 `;
