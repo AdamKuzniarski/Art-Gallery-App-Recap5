@@ -17,7 +17,9 @@ function useLocalStorage(key, initialValue) {
   return [value, setValue];
 }
 
+
 const fetcher = (url) => fetch(url).then((response) => response.json());
+
 
 export default function App({ Component, pageProps }) {
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
