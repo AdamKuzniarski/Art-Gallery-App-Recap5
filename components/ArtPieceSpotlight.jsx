@@ -22,6 +22,7 @@ export default function ArtPieceSpotLight({
   );
 }
 const FigureCard = styled("figure")`
+  margin-top: 10px;
   position: relative;
   border: 20px solid #344056;
   border-radius: 10px;
