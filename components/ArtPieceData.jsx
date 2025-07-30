@@ -12,20 +12,26 @@ export default function ArtPieceDetails({
   piece,
   onToggleFavorite,
   favorites,
+  onAddComment, // die Props von Kommentar
+  artPiecesInfo,
 }) {
-  const [comments, setComments] = useState([]);
+  // Modifiziert, Die Kommentare für ein Künstwerk aus dem globelen Stare holen
+  const { comments = [] } =
+    (artPiecesInfo && artPiecesInfo[artPieceData.slug]) || {};
 
-  function handleAddComment(newComment) {
-    setComments([...comments, newComment]);
+  //Modifiziert, die Funktion, die an das Formular übergeben wird
+  function handleSubmitComment(formData) {
+    const newComment = {
+      text: formData.comment,
+      timestamp: new Date().toLocaleString(),
+    };
+    onAddComment(artPieceData.slug, newComment);
   }
-
   return (
     <DetailsContainer>
       <BackButton as="a" href="/overview">
         <ArrowLeft /> Back To Galery
       </BackButton>
-
-      
 
       <FigureCard>
         <Image src={artPieceData.imageSource} width={100} height={100} alt="" />
@@ -48,12 +54,13 @@ export default function ArtPieceDetails({
         <h3>Comments:</h3>
         {comments.map((comment, index) => (
           <div key={index}>
-            <p>{comment.comment}</p>
+            <p>{comment.text}</p>
+            <small>{comment.timestamp}</small>
           </div>
         ))}
       </div>
 
-      <ArtPieceForm onAddComment={handleAddComment} />
+      <ArtPieceForm onAddComment={handleSubmitComment} />
     </DetailsContainer>
   );
 }
