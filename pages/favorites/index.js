@@ -1,4 +1,5 @@
 import ArtPieceList from "@/components/ArtPieceList";
+import Head from "next/head";
 
 export default function Favorites({
   artPieces,
@@ -10,8 +11,12 @@ export default function Favorites({
 
   return (
     <>
+      <Head>
+        <title> Favorites &bull; Art Gallery</title>
+      </Head>
+
       {favoriteArtPieces.length < 1 ? (
-        <h2>Keine Favoriten</h2>
+        <h2>No favorites selected</h2>
       ) : (
         <ArtPieceList
           artPieces={favoriteArtPieces}
