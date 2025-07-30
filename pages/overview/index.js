@@ -1,4 +1,5 @@
 import ArtPieceList from "@/components/ArtPieceList";
+import Head from "next/head";
 
 export default function OverviewPage({
   artPieces,
@@ -6,10 +7,16 @@ export default function OverviewPage({
   favorites,
 }) {
   return (
-    <ArtPieceList
-      artPieces={artPieces}
-      favorites={favorites}
-      onToggleFavorite={onToggleFavorite}
-    />
+    <>
+      <Head>
+        <title> Overview &bull; Art Gallery</title>
+      </Head>
+
+      <ArtPieceList
+        artPieces={artPieces}
+        favorites={favorites}
+        onToggleFavorite={onToggleFavorite}
+      />
+    </>
   );
 }

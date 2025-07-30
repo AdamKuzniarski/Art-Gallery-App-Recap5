@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import ArtPieceDetails from "@/components/ArtPieceData";
+import Head from "next/head";
 
 export default function ArtDetails({
   artPieces,
@@ -14,12 +15,16 @@ export default function ArtDetails({
 
   return (
     <>
+      <Head>
+        <title>Artwork-Details &bull; Art Gallery</title>
+      </Head>
+
       {artPieceData ? (
         <ArtPieceDetails
           artPieceData={artPieceData}
           onToggleFavorite={onToggleFavorite}
           favorites={favorites}
-          piece={piece}
+          piece={artPieceData} //vorher: piece
         />
       ) : null}
     </>
