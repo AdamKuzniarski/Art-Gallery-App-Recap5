@@ -4,8 +4,8 @@ export default function FavoriteButton({ piece, onToggleFavorite, favorites }) {
   return (
     <FavButton
       onClick={(event) => {
-         event.preventDefault(); 
-        return onToggleFavorite(piece.slug);
+        event.preventDefault();
+        onToggleFavorite(piece?.slug);
       }}
     >
       {favorites.includes(piece?.slug) ? "❤️" : "🩶"}
