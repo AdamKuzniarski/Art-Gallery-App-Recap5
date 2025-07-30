@@ -30,7 +30,7 @@ export default function ArtPieceDetails({
   return (
     <DetailsContainer>
       <BackButton as="a" href="/overview">
-        <ArrowLeft /> Back To Galery
+        <ArrowLeft /> Back To Gallery
       </BackButton>
 
       <FigureCard>
