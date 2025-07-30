@@ -28,7 +28,7 @@ const FigureCard = styled("figure")`
 
   figcaption {
     background-color: #35425a;
-    color: #e0e0e0;
+    color: #414141;
     padding: 0.5rem 0.7rem;
     margin-top: -4px; //Hack!
 

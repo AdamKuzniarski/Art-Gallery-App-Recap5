@@ -79,7 +79,7 @@ const DetailsContainer = styled("div")`
 const BackButton = styled("li")`
   display: flex;
   gap: 0.5em;
-  color: white;
+  color: #201f1f;
   font-size: 1.1rem;
   text-decoration: none;
 `;
