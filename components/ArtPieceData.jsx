@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ArtPieceForm from "./ArtPieceForm";
 import { useState } from "react";
 import ColorPalette from "./ColorPalette";
+import ArrowLeft from "@/assets/arrow-left.svg";
 
 export default function ArtPieceDetails({
   artPieceData,
@@ -20,7 +21,11 @@ export default function ArtPieceDetails({
 
   return (
     <DetailsContainer>
-      <Link href="/overview">Back To Galery</Link>
+      <BackButton as="a" href="/overview">
+        <ArrowLeft /> Back To Galery
+      </BackButton>
+
+      
 
       <FigureCard>
         <Image src={artPieceData.imageSource} width={100} height={100} alt="" />
@@ -62,4 +67,12 @@ const DetailsContainer = styled("div")`
   flex-direction: column;
   gap: 2rem;
   max-width: 400px;
+`;
+
+const BackButton = styled("li")`
+  display: flex;
+  gap: 0.5em;
+  color: white;
+  font-size: 1.1rem;
+  text-decoration: none;
 `;
