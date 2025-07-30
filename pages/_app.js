@@ -6,10 +6,29 @@ import useLocalStorageState from "use-local-storage-state";
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
+  //NEU: State für alle Kommentare, als Objekt gespeichert
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: {} }
+  );
+
+
+  //NEU: Function, um einen Kommentar zu einem bestimmten Bild hinzufügen
+
+  function handleAddComment(slug, newComment) {
+    const currentInfo = artPiecesInfo[slug] || {comments: []}
+    setArtPiecesInfo({
+      ...artPiecesInfo, [slug]: {
+        ...currentInfo, 
+        comments: [... currentInfo.comments, newComment],
+      },
+    })
+  }
+
   const [favorites, setFavorites] = useLocalStorageState("favorites", {
     defaultValue: [],
   });
-  //console.log("favorites:", favorites);
+
   function handleToggleFavorite(slug) {
     if (favorites.includes(slug)) {
       setFavorites(favorites.filter((favorite) => favorite !== slug));
