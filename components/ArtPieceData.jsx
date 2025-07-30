@@ -4,6 +4,7 @@ import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 import ArtPieceForm from "./ArtPieceForm";
 import { useState } from "react";
+import ColorPalette from "./ColorPalette";
 
 export default function ArtPieceDetails({
   artPieceData,
@@ -16,12 +17,15 @@ export default function ArtPieceDetails({
   function handleAddComment(newComment) {
     setComments([...comments, newComment]);
   }
+
   return (
-    <>
+    <DetailsContainer>
       <Link href="/overview">Back To Galery</Link>
 
       <FigureCard>
         <Image src={artPieceData.imageSource} width={100} height={100} alt="" />
+
+        <ColorPalette artPieceData={artPieceData} />
 
         <figcaption>{artPieceData.name}</figcaption>
         <figcaption>{artPieceData.artist}</figcaption>
@@ -38,26 +42,24 @@ export default function ArtPieceDetails({
       <div>
         <h3>Comments:</h3>
         {comments.map((comment, index) => (
-          <div key={index} >
+          <div key={index}>
             <p>{comment.comment}</p>
           </div>
         ))}
       </div>
 
       <ArtPieceForm onAddComment={handleAddComment} />
-    </>
+    </DetailsContainer>
   );
 }
 
 const FigureCard = styled("figure")`
   position: relative;
-  width: 30%;
-  height: auto;
-
-  p {
-    color: white;
-  }
 `;
 
-
-
+const DetailsContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 400px;
+`;
