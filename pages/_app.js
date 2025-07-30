@@ -12,17 +12,22 @@ export default function App({ Component, pageProps }) {
     { defaultValue: {} }
   );
 
-
   //NEU: Function, um einen Kommentar zu einem bestimmten Bild hinzufügen
 
   function handleAddComment(slug, newComment) {
-    const currentInfo = artPiecesInfo[slug] || {comments: []}
-    setArtPiecesInfo({
-      ...artPiecesInfo, [slug]: {
-        ...currentInfo, 
-        comments: [... currentInfo.comments, newComment],
-      },
-    })
+    const existingInfoForThisPiece = artPiecesInfo[slug] || {};
+    const existingComments = existingInfoForThisPiece.comments || [];
+    const newCommentList = [...existingComments, newComment];
+    const updatedInfoForThisPiece = {
+      ...existingInfoForThisPiece,
+      comments: newCommentList,
+    };
+    // estelle eine Kopie des gesammten 'ArtPiecesInfo' -Objekts
+    const updatedArtPiecesInfo = {
+      ...artPiecesInfo,
+    };
+    updatedArtPiecesInfo[slug] = updatedInfoForThisPiece;
+    setArtPiecesInfo(updatedArtPiecesInfo);
   }
 
   const [favorites, setFavorites] = useLocalStorageState("favorites", {
@@ -65,6 +70,9 @@ export default function App({ Component, pageProps }) {
         favorites={favorites}
         onToggleFavorite={handleToggleFavorite}
         isFavorite={isFavoriteArtPiece}
+        //NEU: Props für Kommentare weitergeben
+        artPiecesInfo={artPiecesInfo}
+        onAddComment={handleAddComment}
       />
     </Layout>
   );
