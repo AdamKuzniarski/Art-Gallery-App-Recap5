@@ -2,7 +2,6 @@ import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 
-
 export default function ArtPiece({ piece, onToggleFavorite, favorites }) {
   return (
     <FigureCard>
@@ -28,7 +27,7 @@ const FigureCard = styled("figure")`
 
   figcaption {
     background-color: #35425a;
-    color: #414141;
+    color: #f1ecec;
     padding: 0.5rem 0.7rem;
     margin-top: -4px; //Hack!
 
