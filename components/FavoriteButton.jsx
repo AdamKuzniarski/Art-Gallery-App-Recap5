@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
+//
 export default function FavoriteButton({ piece, onToggleFavorite, favorites }) {
   return (
     <FavButton
       onClick={(event) => {
-        event.preventDefault();
-        onToggleFavorite(piece?.slug);
+        event.preventDefault(); // beschränkt das Klick-Event auf dem FavButton, sonst Weiterleitung auf Detail-Seite
+        onToggleFavorite(piece.slug);
       }}
     >
-      {favorites.includes(piece?.slug) ? "❤️" : "🩶"}
+      {favorites.includes(piece.slug) ? "❤️" : "🩶"}
     </FavButton>
   );
 }

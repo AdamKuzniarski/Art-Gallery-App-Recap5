@@ -2,8 +2,10 @@ import ArtPieceSpotLight from "@/components/ArtPieceSpotlight";
 import Head from "next/head";
 import { useMemo } from "react";
 
+// Zufällige Erzeugung eines Bildes,(Math.random)
+//useMemo verhindert Aktualisierung des States beim Klicken des Like-Buttons
+//Die Variable spotlightArtPiece  wählt das zufällige Bild aus
 export default function HomePage({ artPieces, favorites, onToggleFavorite }) {
-  //const artPieceRandom = Math.floor(Math.random() * artPieces.length);
   const artPieceRandom = useMemo(
     () => Math.floor(Math.random() * artPieces.length),
     [artPieces]

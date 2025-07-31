@@ -2,6 +2,7 @@ import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 
+//Rendern die Komponenten auf der Webseite(das zufällig generierte Bild)
 export default function ArtPieceSpotLight({
   piece,
   favorites,
@@ -31,10 +32,7 @@ const FigureCard = styled("figure")`
   max-width: 350px;
   box-shadow: 5px 4px 5px rgba(43, 45, 44, 0.7);
 
-  img {
-    /* border-radius: 20px; */
-  }
-
+  
   figcaption {
     background-color: #345644;
     color: #e0e0e0;

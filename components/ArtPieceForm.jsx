@@ -1,5 +1,6 @@
 import styled from "styled-components";
 export default function ArtPieceForm({ onAddComment }) {
+  //Verarbeitung der Formulardaten 
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -10,6 +11,8 @@ export default function ArtPieceForm({ onAddComment }) {
 
     event.target.reset();
   }
+
+  //Das Formular 
   return (
     <form onSubmit={handleSubmit}>
       <h3>Add Comment:</h3>
