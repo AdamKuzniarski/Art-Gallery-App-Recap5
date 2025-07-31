@@ -1,9 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
 import styled from "styled-components";
 import ArtPieceForm from "./ArtPieceForm";
-import { useState } from "react";
 import ColorPalette from "./ColorPalette";
 import ArrowLeft from "@/assets/arrow-left.svg";
 
@@ -12,14 +10,14 @@ export default function ArtPieceDetails({
   piece,
   onToggleFavorite,
   favorites,
-  onAddComment, // die Props von Kommentar
+  onAddComment,
   artPiecesInfo,
 }) {
-  // Modifiziert, Die Kommentare für ein Künstwerk aus dem globelen Stare holen
+  // Die Kommentare für ein spezifisches Kunstwerk aus dem State holen
   const { comments = [] } =
     (artPiecesInfo && artPiecesInfo[artPieceData.slug]) || {};
 
-  //Modifiziert, die Funktion, die an das Formular übergeben wird
+  // Die Funktion, die an das Formular übergeben wird
   function handleSubmitComment(formData) {
     const newComment = {
       text: formData.comment,
@@ -29,20 +27,40 @@ export default function ArtPieceDetails({
   }
   return (
     <DetailsContainer>
+      {/* 
+      Back-Button zur Übersicht
+    */}
       <BackButton as="a" href="/overview">
         <ArrowLeft /> Back To Gallery
       </BackButton>
 
+      {/* 
+      Bild 
+    */}
       <FigureCard>
-        <Image src={artPieceData.imageSource} width={100} height={100} alt="" />
+        <Image
+          src={artPieceData.imageSource}
+          width={100}
+          height={100}
+          alt={artPieceData.name}
+        />
 
+        {/* 
+      Anzeige der Farbpalette 
+    */}
         <ColorPalette artPieceData={artPieceData} />
 
+        {/* 
+      Detailinformationen zum Bild 
+    */}
         <figcaption>{artPieceData.name}</figcaption>
         <figcaption>{artPieceData.artist}</figcaption>
         <figcaption>{artPieceData.year}</figcaption>
         <figcaption>{artPieceData.genre}</figcaption>
 
+        {/* 
+      Favorite Button für die Detail-Anzeige
+    */}
         <FavoriteButton
           piece={piece}
           favorites={favorites}
@@ -50,6 +68,9 @@ export default function ArtPieceDetails({
         />
       </FigureCard>
 
+      {/* 
+      Anzeige der der Kommentare
+    */}
       <div>
         <h3>Comments:</h3>
         {comments.map((comment, index) => (
@@ -60,6 +81,9 @@ export default function ArtPieceDetails({
         ))}
       </div>
 
+      {/* 
+      Formular zur Eingabe der Kommentare
+    */}
       <ArtPieceForm onAddComment={handleSubmitComment} />
     </DetailsContainer>
   );
