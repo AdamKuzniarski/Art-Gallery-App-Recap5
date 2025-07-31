@@ -20,6 +20,7 @@ export default function ArtPieceDetails({
   // Die Funktion, die an das Formular übergeben wird
   function handleSubmitComment(formData) {
     const newComment = {
+      id: crypto.randomUUID(),
       text: formData.comment,
       timestamp: new Date().toLocaleString(),
     };
@@ -73,8 +74,8 @@ export default function ArtPieceDetails({
     */}
       <div>
         <h3>Comments:</h3>
-        {comments.map((comment, index) => (
-          <div key={index}>
+        {comments.map((comment) => (
+          <div key={comment.id}>
             <p>{comment.text}</p>
             <small>{comment.timestamp}</small>
           </div>

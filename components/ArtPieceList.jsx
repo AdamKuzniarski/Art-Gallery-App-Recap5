@@ -1,8 +1,9 @@
 import Link from "next/link";
 import ArtPiece from "@/components/ArtPiece";
+import ArtPieceCommentDisplay from "./ArtPieceCommentDisplay";
 
 // Auflistung der Bilder
-// Einzelne Bilder in der Komponente ArtPiece 
+// Einzelne Bilder in der Komponente ArtPiece
 export default function ArtPieceList({
   artPieces,
   onToggleFavorite,
@@ -10,18 +11,11 @@ export default function ArtPieceList({
 }) {
   return (
     <ul>
-      {artPieces.map((piece) => (
-        <li key={piece.slug}>
-          <Link href={`overview/${piece.slug}`}>
-            <ArtPiece
-              piece={piece}
-              favorites={favorites}
-              onToggleFavorite={onToggleFavorite}
-              
-            />
-          </Link>
-        </li>
-      ))}
+      <ArtPieceCommentDisplay
+        artPieces={artPieces}
+        onToggleFavorite={onToggleFavorite}
+        favorites={favorites}
+      />
     </ul>
   );
 }
