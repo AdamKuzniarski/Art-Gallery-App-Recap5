@@ -9,12 +9,15 @@ export default function ArtDetails({
   onToggleFavorite,
   favorites,
   onAddComment,
-  artPiecesInfo,
+  comments,
 }) {
   const router = useRouter();
   const { slug: artPieceSlug } = router.query;
 
   const artPieceData = artPieces.find((piece) => piece.slug === artPieceSlug);
+  const artPieceComments = comments.filter(
+    (comment) => comment.artPieceSlug === artPieceSlug
+  );
 
   if (!artPieceData) {
     return <p>Loading art piece...</p>;
@@ -26,16 +29,13 @@ export default function ArtDetails({
       </Head>
 
       {/* Aufruf der Komponente für die Details des Bildes */}
-      {artPieceData ? (
-        <ArtPieceDetails
-          artPieceData={artPieceData}
-          artPiecesInfo={artPiecesInfo}
-          onAddComment={onAddComment}
-          onToggleFavorite={onToggleFavorite}
-          favorites={favorites}
-          piece={artPieceData} 
-        />
-      ) : null}
+      <ArtPieceDetails
+        artPieceData={artPieceData}
+        comments={artPieceComments}
+        onAddComment={onAddComment}
+        onToggleFavorite={onToggleFavorite}
+        favorites={favorites}
+      />
     </>
   );
 }

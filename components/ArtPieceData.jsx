@@ -7,25 +7,15 @@ import ArrowLeft from "@/assets/arrow-left.svg";
 
 export default function ArtPieceDetails({
   artPieceData,
-  piece,
+  comments,
   onToggleFavorite,
   favorites,
   onAddComment,
-  artPiecesInfo,
 }) {
-  // Die Kommentare für ein spezifisches Kunstwerk aus dem State holen
-  const { comments = [] } =
-    (artPiecesInfo && artPiecesInfo[artPieceData.slug]) || {};
-
-  // Die Funktion, die an das Formular übergeben wird
-  function handleSubmitComment(formData) {
-    const newComment = {
-      id: crypto.randomUUID(),
-      text: formData.comment,
-      timestamp: new Date().toLocaleString(),
-    };
-    onAddComment(artPieceData.slug, newComment);
+  function handleSubmitComment(data) {
+    onAddComment(artPieceData.slug, data.comment);
   }
+
   return (
     <DetailsContainer>
       {/* 
@@ -63,7 +53,7 @@ export default function ArtPieceDetails({
       Favorite Button für die Detail-Anzeige
     */}
         <FavoriteButton
-          piece={piece}
+          piece={artPieceData}
           favorites={favorites}
           onToggleFavorite={onToggleFavorite}
         />
@@ -76,8 +66,8 @@ export default function ArtPieceDetails({
         <h3>Comments:</h3>
         {comments.map((comment) => (
           <div key={comment.id}>
-            <p>{comment.text}</p>
-            <small>{comment.timestamp}</small>
+            <p>{comment.content}</p>
+            <small>{comment.createdAt}</small>
           </div>
         ))}
       </div>
