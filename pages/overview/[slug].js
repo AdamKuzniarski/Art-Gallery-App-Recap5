@@ -7,7 +7,7 @@ import Head from "next/head";
 export default function ArtDetails({
   artPieces,
   onToggleFavorite,
-  favorites,
+  isArtPieceFavorite,
   onAddComment,
   comments,
 }) {
@@ -34,7 +34,7 @@ export default function ArtDetails({
         comments={artPieceComments}
         onAddComment={onAddComment}
         onToggleFavorite={onToggleFavorite}
-        favorites={favorites}
+        isArtPieceFavorite={isArtPieceFavorite}
       />
     </>
   );

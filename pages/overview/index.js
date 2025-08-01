@@ -4,7 +4,7 @@ import Head from "next/head";
 export default function OverviewPage({
   artPieces,
   onToggleFavorite,
-  favorites,
+  isArtPieceFavorite,
 }) {
   return (
     <>
@@ -14,7 +14,7 @@ export default function OverviewPage({
 
       <ArtPieceList
         artPieces={artPieces}
-        favorites={favorites}
+        isArtPieceFavorite={isArtPieceFavorite}
         onToggleFavorite={onToggleFavorite}
       />
     </>

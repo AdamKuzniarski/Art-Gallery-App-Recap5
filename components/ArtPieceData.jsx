@@ -9,7 +9,7 @@ export default function ArtPieceDetails({
   artPieceData,
   comments,
   onToggleFavorite,
-  favorites,
+  isArtPieceFavorite,
   onAddComment,
 }) {
   function handleSubmitComment(data) {
@@ -53,9 +53,8 @@ export default function ArtPieceDetails({
       Favorite Button für die Detail-Anzeige
     */}
         <FavoriteButton
-          piece={artPieceData}
-          favorites={favorites}
-          onToggleFavorite={onToggleFavorite}
+          isFavorite={isArtPieceFavorite(artPieceData.slug)}
+          onToggleFavorite={() => onToggleFavorite(artPieceData.slug)}
         />
       </FigureCard>
 

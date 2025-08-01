@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ArtPiece from "@/components/ArtPiece";
 import ArtPieceCommentDisplay from "./ArtPieceCommentDisplay";
 
 // Auflistung der Bilder
@@ -7,14 +6,14 @@ import ArtPieceCommentDisplay from "./ArtPieceCommentDisplay";
 export default function ArtPieceList({
   artPieces,
   onToggleFavorite,
-  favorites,
+  isArtPieceFavorite,
 }) {
   return (
     <ul>
       <ArtPieceCommentDisplay
         artPieces={artPieces}
         onToggleFavorite={onToggleFavorite}
-        favorites={favorites}
+        isArtPieceFavorite={isArtPieceFavorite}
       />
     </ul>
   );

@@ -4,7 +4,7 @@ import ArtPiece from "@/components/ArtPiece";
 export default function ArtPieceCommentDisplay({
   artPieces,
   onToggleFavorite,
-  favorites,
+  isArtPieceFavorite,
 }) {
   return (
     <>
@@ -13,7 +13,7 @@ export default function ArtPieceCommentDisplay({
           <Link href={`overview/${piece.slug}`}>
             <ArtPiece
               piece={piece}
-              favorites={favorites}
+              isFavorite={isArtPieceFavorite(piece.slug)}
               onToggleFavorite={onToggleFavorite}
             />
           </Link>

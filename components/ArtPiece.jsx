@@ -5,7 +5,7 @@ import styled from "styled-components";
 // Vom Array - übergeben wir die Daten für die Kunstwerke(Image piece.imageSource ...)
 // <Image> Tag brauch zusätzliche Konfigurationen um die externe Bilder-Quellen einzubinden
 // <FavoriteButton> Tag wird hinzugefügt mit Funktionalität
-export default function ArtPiece({ piece, onToggleFavorite, favorites }) {
+export default function ArtPiece({ piece, onToggleFavorite, isFavorite }) {
   return (
     <FigureCard>
       <Image
@@ -17,10 +17,9 @@ export default function ArtPiece({ piece, onToggleFavorite, favorites }) {
       <figcaption>{piece.artist}</figcaption>
       <figcaption>{piece.name}</figcaption>
       <FavoriteButton
-        piece={piece}
-        favorites={favorites}
-        onToggleFavorite={onToggleFavorite}
-      ></FavoriteButton>
+        isFavorite={isFavorite}
+        onToggleFavorite={() => onToggleFavorite(piece.slug)}
+      />
     </FigureCard>
   );
 }
@@ -38,7 +37,7 @@ const FigureCard = styled("figure")`
     color: #f1ecec;
     padding: 0.5rem 0.7rem;
     //entfernt die Lücken zwischen figcaption und Bild
-    margin-top: -4px; //Hack! 
+    margin-top: -4px; //Hack!
 
     p {
       font-size: 1.1rem;

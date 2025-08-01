@@ -5,21 +5,24 @@ import styled from "styled-components";
 //Rendern die Komponenten auf der Webseite(das zufällig generierte Bild)
 export default function ArtPieceSpotLight({
   piece,
-  favorites,
+  isArtPieceFavorite,
   onToggleFavorite,
 }) {
   return (
     <FigureCard>
-      <Image src={piece.imageSource} width={300} height={300} alt={piece.name} />
+      <Image
+        src={piece.imageSource}
+        width={300}
+        height={300}
+        alt={piece.name}
+      />
 
       <figcaption>{piece.artist}</figcaption>
 
       <FavoriteButton
-      
-        piece={piece}
-        favorites={favorites}
-        onToggleFavorite={onToggleFavorite}
-      ></FavoriteButton>
+        isFavorite={isArtPieceFavorite(piece.slug)}
+        onToggleFavorite={() => onToggleFavorite(piece.slug)}
+      />
     </FigureCard>
   );
 }
@@ -32,7 +35,6 @@ const FigureCard = styled("figure")`
   max-width: 350px;
   box-shadow: 5px 4px 5px rgba(43, 45, 44, 0.7);
 
-  
   figcaption {
     background-color: #345644;
     color: #e0e0e0;

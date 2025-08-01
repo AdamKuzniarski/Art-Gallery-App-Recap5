@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }) {
   //Is der Slug im Array enthalten, dann wird er enfernt(if)
   //Ist der Slug im Array nicht enthalten, dann wird er hinzugefügt(else)
   function handleToggleFavorite(slug) {
-    if (favorites.includes(slug)) {
+    if (isArtPieceFavorite(slug)) {
       setFavorites(favorites.filter((favorite) => favorite !== slug));
     } else {
       setFavorites([...favorites, slug]);
@@ -46,21 +46,18 @@ export default function App({ Component, pageProps }) {
   }
 
   // Prüft ob, ein Bild(Slug) im Favorites Array enthalten ist (true/false).
-  function isFavoriteArtPiece(piece) {
-    if (favorites.includes(piece.slug)) {
-      return true;
-    }
-    return false;
+  function isArtPieceFavorite(slug) {
+    return favorites.includes(slug);
   }
 
   //Fetchen vom API, Daten der Bilder.
 
   if (isLoading) {
-    <h2>Loading...</h2>;
+    return <h2>Loading...</h2>;
   }
 
-  if (error) {
-    <h2>No data to load </h2>;
+  if (error || !artPieces) {
+    return <h2>No data to load </h2>;
   }
 
   // Props übergeben an Kinder-Komponenten
@@ -72,9 +69,9 @@ export default function App({ Component, pageProps }) {
           {...pageProps}
           artPieces={artPieces}
           favorites={favorites}
-          onToggleFavorite={handleToggleFavorite}
-          isFavorite={isFavoriteArtPiece}
           comments={comments}
+          onToggleFavorite={handleToggleFavorite}
+          isArtPieceFavorite={isArtPieceFavorite}
           onAddComment={handleAddComment}
         />
       </Layout>

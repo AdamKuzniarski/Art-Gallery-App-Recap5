@@ -4,11 +4,12 @@ import Head from "next/head";
 // Die Variable favoriteArtPieces wählt die Favoriten unter den Bildern aus
 export default function Favorites({
   artPieces,
-  favorites,
   onToggleFavorite,
-  isFavorite,
+  isArtPieceFavorite,
 }) {
-  const favoriteArtPieces = artPieces.filter((piece) => isFavorite(piece));
+  const favoriteArtPieces = artPieces.filter((piece) =>
+    isArtPieceFavorite(piece.slug)
+  );
 
   return (
     <>
@@ -25,7 +26,7 @@ export default function Favorites({
       ) : (
         <ArtPieceList
           artPieces={favoriteArtPieces}
-          favorites={favorites}
+          isArtPieceFavorite={isArtPieceFavorite}
           onToggleFavorite={onToggleFavorite}
         />
       )}
