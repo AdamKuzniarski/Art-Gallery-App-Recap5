@@ -4,8 +4,8 @@ export default function Header() {
   return <MainHeader>Art Gallery</MainHeader>;
 }
 
-const MainHeader = styled("header")`
-  display: flex;  
+const MainHeader = styled.header`
+  display: flex;
   justify-content: center;
   position: sticky;
   top: 0;

@@ -13,9 +13,9 @@ export default function ArtPiece({ piece, onToggleFavorite, isFavorite }) {
         width={350}
         height={200}
         alt={piece.name}
-      ></Image>
-      <figcaption>{piece.artist}</figcaption>
-      <figcaption>{piece.name}</figcaption>
+      />
+      <FigureCardCaption>{piece.artist}</FigureCardCaption>
+      <FigureCardCaption>{piece.name}</FigureCardCaption>
       <FavoriteButton
         isFavorite={isFavorite}
         onToggleFavorite={() => onToggleFavorite(piece.slug)}
@@ -24,28 +24,19 @@ export default function ArtPiece({ piece, onToggleFavorite, isFavorite }) {
   );
 }
 
-const FigureCard = styled("figure")`
+const FigureCard = styled.figure`
   position: relative;
   border: 1px solid green;
   margin-top: 20px;
   border-radius: 7px;
   width: 60vw;
   max-width: 350px;
+`;
 
-  figcaption {
-    background-color: #35425a;
-    color: #f1ecec;
-    padding: 0.5rem 0.7rem;
-    //entfernt die Lücken zwischen figcaption und Bild
-    margin-top: -4px; //Hack!
-
-    p {
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
-
-    span {
-      font-size: 0.9rem;
-    }
-  }
+const FigureCardCaption = styled.figcaption`
+  background-color: #35425a;
+  color: #f1ecec;
+  padding: 0.5rem 0.7rem;
+  //entfernt die Lücken zwischen figcaption und Bild
+  margin-top: -4px; //Hack!
 `;

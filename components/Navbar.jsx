@@ -6,33 +6,33 @@ export default function Navbar() {
     <MainNav>
       <LinkList>
         <LinkItem>
-          <Link href="/">Spotlight</Link>
+          <NavLink href="/">Spotlight</NavLink>
         </LinkItem>
 
         <LinkItem>
-          <Link href="/overview">Gallery</Link>
+          <NavLink href="/overview">Gallery</NavLink>
         </LinkItem>
 
         <LinkItem>
-          <Link href="/favorites">Favorites</Link>
+          <NavLink href="/favorites">Favorites</NavLink>
         </LinkItem>
       </LinkList>
     </MainNav>
   );
 }
 
-const MainNav = styled("nav")`
+const MainNav = styled.nav`
   position: sticky;
   bottom: 0;
 `;
 
-const LinkList = styled("ul")`
+const LinkList = styled.ul`
   display: flex;
   background-color: var(--navbar-bg-color);
   font-size: 24px;
 `;
 
-const LinkItem = styled("li")`
+const LinkItem = styled.li`
   flex: 1 0 auto;
   list-style-type: none;
   border-right: 1px solid rgb(99, 99, 99);
@@ -40,18 +40,20 @@ const LinkItem = styled("li")`
   &:last-child {
     border-right: none;
   }
+`;
 
-  a {
-    display: grid;
-    place-content: center;
-    padding: 0.9rem 0 0.7rem;
-    color: #e0e0e0;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
+const NavLink = styled(Link)`
+  display: grid;
+  place-content: center;
+  padding: 0.9rem 0 0.7rem;
+  color: #e0e0e0;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
 
-    &:hover, &:focus, &.active {
-      background-color: var(--navbar-hover-color);
-      cursor: pointer;
-    }
+  &:hover,
+  &:focus,
+  &.active {
+    background-color: var(--navbar-hover-color);
+    cursor: pointer;
   }
 `;

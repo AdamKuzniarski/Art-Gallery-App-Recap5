@@ -11,6 +11,8 @@ export default function Favorites({
     isArtPieceFavorite(piece.slug)
   );
 
+  const isFavoriteListEmpty = favoriteArtPieces.length <= 0;
+
   return (
     <>
       <Head>
@@ -21,9 +23,9 @@ export default function Favorites({
       Sind keine Bilder ausgewählt? Meldung an den Benutzer
       Sonst Auflistung der Bilder   (ArtPieceList)
       */}
-      {favoriteArtPieces.length < 1 ? (
-        <h2>No favorites selected</h2>
-      ) : (
+      {isFavoriteListEmpty && <h2>No favorites selected</h2>}
+
+      {!isFavoriteListEmpty && (
         <ArtPieceList
           artPieces={favoriteArtPieces}
           isArtPieceFavorite={isArtPieceFavorite}

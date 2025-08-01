@@ -1,18 +1,18 @@
 import styled from "styled-components";
-export default function ArtPieceForm({ onAddComment }) {
-  //Verarbeitung der Formulardaten 
+export default function ArtPieceForm({ onSubmit }) {
+  //Verarbeitung der Formulardaten
   function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onAddComment(data);
+    onSubmit(data);
 
     event.target.reset();
   }
 
-  //Das Formular 
+  //Das Formular
   return (
     <form onSubmit={handleSubmit}>
       <h3>Add Comment:</h3>
@@ -24,9 +24,7 @@ export default function ArtPieceForm({ onAddComment }) {
         required
       />
 
-      <StyledButton type="submit">
-        Send
-      </StyledButton>
+      <StyledButton type="submit">Send</StyledButton>
     </form>
   );
 }

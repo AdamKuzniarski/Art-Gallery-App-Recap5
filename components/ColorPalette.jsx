@@ -1,30 +1,29 @@
+import Link from "next/link";
 import styled from "styled-components";
 
-export default function ColorPalette({ artPieceData }) {
+export default function ColorPalette({ colors }) {
   return (
     <Colors>
-      <span style={{ backgroundColor: artPieceData.colors[0] }}></span>
-      <span style={{ backgroundColor: artPieceData.colors[1] }}></span>
-      <span style={{ backgroundColor: artPieceData.colors[2] }}></span>
-      <span style={{ backgroundColor: artPieceData.colors[3] }}></span>
-      <span style={{ backgroundColor: artPieceData.colors[4] }}></span>
+      {colors.map((color) => (
+        <ColorItem key={color} color={color} />
+      ))}
     </Colors>
   );
 }
 
-const Colors = styled("div")`
+const Colors = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1rem;
-
-  & > span {
-   width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  }
 `;
 
+const ColorItem = styled.li`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 
+  background-color: ${(props) => props.color};
+`;
